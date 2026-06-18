@@ -113,6 +113,7 @@ from launch_ros.actions import Node
 ### Body
 #### Launch Setup --> OpaqueFunction parameter
 ```sh
+# -- Added --
 def launch_setup(context, *args, **kwargs):
     pkg_share = FindPackageShare('spike_sim')
     namespace = LaunchConfiguration('namespace').perform(context)
@@ -180,10 +181,10 @@ def launch_setup(context, *args, **kwargs):
 ```
 #### OpaqueFunction in generate_launch_description
 ```sh
-# Removed 
+# -- Removed --
 IncludeLaunchDescription(...)
 
-# Added 
+# -- Added --
 DeclareLaunchArgument('api_port', default_value='8080', description='REST API port'),
         DeclareLaunchArgument('spike_ws_path', default_value='', description='Override path to spike_ws (native mode only)'),
 
@@ -193,10 +194,10 @@ OpaqueFunction(function=launch_setup) # Added
 ## scout_sim.yaml
 If left unchanged, `/scout_3d_transform/spatial_detections` and `/scout_3d_transform/tracks` will output empty detections. However, `.../..._all` will output unfiltered sensor / ground truth detections. If you apply these changes, you bypass the sensor gates making `/spatial_detections == /spatial_detections_all`  and `/tracks == /tracks_all`. This is a quick hack to make detections topic output something; however, this is not how it is done on the real platform.
 ```sh
-# Changed
+# -- Changed --
 enable_self_distance_filter: false
 
-# Added
+# -- Added --
 enable_spotter_motion_gate: false
 enable_moving_filter: false
 coast_publish_max_stale_sec: 0.0
