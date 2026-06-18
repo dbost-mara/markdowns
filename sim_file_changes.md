@@ -88,6 +88,13 @@ The multi-cam feature works perfectly fine but is currently not being implemente
 # -- Added --
 'params_file':os.path.join(hangar_pkg, 'config', 'field_hangar_1.yaml'),
 ```
+### Launch Description 
+```sh
+# -- Added --
+### For multi-camera
+DeclareLaunchArgument('cam_indices', default_value='0', description='Comma-separated camera indices, e.g. "0,1,2,3,4"'),
+DeclareLaunchArgument('perception_stagger_sec', default_value='8.0', description='Delay (s) between per-camera TRT engine loads'),
+```
 
 ## spawn_spotter.launch.py
 ### Header
